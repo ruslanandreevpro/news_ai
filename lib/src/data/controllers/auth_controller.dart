@@ -15,12 +15,14 @@ class AuthController extends GetxController {
 
   RxBool isLoggedIn = false.obs;
 
+  Rxn<UserModel> currentUser = Rxn<UserModel>();
+
   Client client = Client();
 
   late Account _account;
 
   @override
-  void onReady() async {
+  void onReady() {
     client
       .setEndpoint(AppwriteServer.apiEndpoint)
       .setProject(AppwriteServer.projectID);
@@ -47,6 +49,7 @@ class AuthController extends GetxController {
   void _isAccountLoggedIn() async {
     var result = await _account.get()
       .then((value) {
+        currentUser.value = UserModel.fromMap(value.toMap());
         Get.offAllNamed('/home');
       }).catchError((error) {
         Get.offAllNamed('/');

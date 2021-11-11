@@ -7,9 +7,12 @@ import 'package:url_strategy/url_strategy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put<AuthController>(AuthController());
+  Get.put<AvatarsController>(AvatarsController());
   Get.put<CustomDrawerController>(CustomDrawerController());
+  Get.put<DatabaseController>(DatabaseController());
   Get.put<MessageController>(MessageController());
   Get.put<NotificationController>(NotificationController());
+  Get.put<StorageController>(StorageController());
   setPathUrlStrategy();
   runApp(const NewsAIApp());
 }

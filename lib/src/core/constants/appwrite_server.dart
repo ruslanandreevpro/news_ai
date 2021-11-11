@@ -1,5 +1,10 @@
 class AppwriteServer {
-  static const String serverAddress = "193.168.46.32";
-  static const String projectID = "618a60b2c2201";
-  static const String apiEndpoint = "https://$serverAddress/v1";
+  // static const String serverAddress = "http://localhost:4080";
+  static const String serverAddress = "http://62.113.96.2";
+  // static const String projectID = "618b9a5b0d1bd";
+  static const String projectID = "618cde24751c7";
+  static const String apiEndpoint = "$serverAddress/v1";
+  static const String avatarsAPIKey = "0dfe8ee665d7dba1bbbc97d0548bf9e0097240279e21bec76f52fd3e81f4d40ccea60bfaa02755895cd42d942135735518d383dcc1671f02b0c2375330be2bd2b3c663f55f7b536ae9cb8bb388f9650591c2f72e4ef735e3f8996726f8297323b3f7156a7051cb10ed48c99812511abbccb2b05860c922004e1edf133695cbbc";
+  static const String databaseAPIKey = "6cc6a3eb25b5f7efbe3b94a822481d31ab9e0503cbe1c571061c2c8c1bf517145665861ed4218211af71d2375171dc58897f9c65bf3d62222a319304d32996a27c259742214a5bdfdef9d9e549547c0cda02f8334d817d99ea2f1b8683ec8d8e32768a8aa7d704373480afe88989e9f7b7619619918c095898b600b432a96971";
+  static const String storageAPIKey = "7a7906ab62bf643b267e44569f8a70adc750733132d3fbadd44985596c373c8da7055a65524e2837a0ed74972188d07e11bfae640a0f0b08ba8b09f13df1749d7a3d0258d1c1c29744bf55c7781e15d533aa13ba316952896796ddf312991de4a80072b2e1f3380b116acc2c99f2ca8cc7cdf8f1c0ec7f35e7cab79180fc3e2d";
 }

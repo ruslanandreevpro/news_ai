@@ -91,12 +91,12 @@ class HomeUI extends StatelessWidget {
                   PopupMenuItem(
                     value: 'SIGN_OUT',
                     child: Row(
-                      children: [
-                        Icon(LineIcons.powerOff, color: Theme.of(context).textTheme.bodyText1!.color,),
-                        const SizedBox(
+                      children: const [
+                        Icon(LineIcons.powerOff),
+                        SizedBox(
                           width: 16.0,
                         ),
-                        const Text('Выход'),
+                        Text('Выход'),
                       ],
                     ),
                   ),

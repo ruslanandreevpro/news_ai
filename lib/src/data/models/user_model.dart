@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   final String? id;
   final String? name;
   final int? registration;
@@ -8,7 +8,7 @@ class User {
   final bool? emailVerification;
   final Object prefs;
 
-  User({
+  UserModel({
     required this.id,
     required this.name,
     required this.registration,
@@ -19,8 +19,8 @@ class User {
     required this.prefs,
   });
 
-  factory User.fromMap(Map data) {
-    return User(
+  factory UserModel.fromMap(Map<String, dynamic> data) {
+    return UserModel(
       id: data['\$id'],
       name: data['name'],
       registration: data['registration'],
