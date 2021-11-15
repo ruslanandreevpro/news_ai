@@ -12,6 +12,7 @@ void main() async {
   Get.put<DatabaseController>(DatabaseController());
   Get.put<MessageController>(MessageController());
   Get.put<NotificationController>(NotificationController());
+  Get.put<RSSController>(RSSController());
   Get.put<StorageController>(StorageController());
   setPathUrlStrategy();
   runApp(const NewsAIApp());
@@ -27,6 +28,7 @@ class NewsAIApp extends StatelessWidget {
       title: 'News AI',
       initialRoute: Routes.initialPage,
       getPages: AppPages.pages,
+      transitionDuration: const Duration(milliseconds: 0),
     );
   }
 }

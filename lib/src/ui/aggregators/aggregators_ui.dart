@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:news_ai/src/widgets/widgets.dart';
 
 class AggregatorsUI extends StatelessWidget {
-  const AggregatorsUI({Key? key}) : super(key: key);
+  AggregatorsUI({Key? key}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final String _title = 'Источники';
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      key: _scaffoldKey,
+      drawerEnableOpenDragGesture: false,
+      appBar: CustomAppBar(
+        scaffoldKey: _scaffoldKey,
+        title: _title,
+      ),
+      drawer: CustomDrawer(),
+      body: Container(),
+    );
   }
 }

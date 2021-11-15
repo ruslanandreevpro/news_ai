@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:news_ai/src/data/controllers/controllers.dart';
 
@@ -7,19 +8,28 @@ class CustomDrawer extends StatelessWidget {
 
   final CustomDrawerController _customDrawerController = CustomDrawerController.to;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
+      child: Container(
+        width: 270.0,
+        color: Colors.white,
+        child: ListView(
           children: [
             customDrawerItem(
-              title: 'Обзор',
+              title: 'Главная',
               icon: LineIcons.home,
+              route: '/home',
+            ),
+            customDrawerItem(
+              title: 'Обзор',
+              icon: LineIcons.alternateTachometer,
               route: '/dashboard',
             ),
             customDrawerItem(
-              title: 'Агрегаторы',
+              title: 'Источники',
               icon: LineIcons.rssSquare,
               route: '/aggregators',
             ),
@@ -27,16 +37,6 @@ class CustomDrawer extends StatelessWidget {
               title: 'Сообщения',
               icon: LineIcons.envelope,
               route: '/messages',
-            ),
-            customDrawerItem(
-              title: 'Настройки',
-              icon: LineIcons.cog,
-              route: '/settings',
-            ),
-            customDrawerItem(
-              title: 'Профиль',
-              icon: LineIcons.user,
-              route: '/profile',
             ),
           ],
         ),
@@ -46,21 +46,11 @@ class CustomDrawer extends StatelessWidget {
 
   Widget customDrawerItem({String? title, IconData? icon, String? route}) {
     return ListTile(
-        title: Text(
-          title!,
-          style: const TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        leading: Icon(
-          icon,
-          color: Colors.black,
-        ),
-        onTap: () {
-          _customDrawerController.sliderMenuKey.currentState!.closeDrawer();
-          var result = _customDrawerController.pages.indexWhere((element) => element.route == route);
-          _customDrawerController.currentPage.value = result;
-        }
+      leading: Icon(icon),
+      title: Text(title!),
+      onTap: () {
+        Get.toNamed(route!);
+      },
     );
   }
 }

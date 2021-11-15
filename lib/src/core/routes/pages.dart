@@ -10,10 +10,10 @@ abstract class AppPages {
     GetPage(name: Routes.signInPage, page: () => SignInUI()),
     GetPage(name: Routes.welcomePage, page: () => const WelcomeUI()),
     GetPage(name: Routes.homePage, page: () => HomeUI()),
-    GetPage(name: Routes.dashboardPage, page: () => const DashboardUI()),
-    GetPage(name: Routes.dashboardPage, page: () => const AggregatorsUI()),
-    GetPage(name: Routes.dashboardPage, page: () => const MessagesUI()),
-    GetPage(name: Routes.dashboardPage, page: () => const SettingsUI()),
-    GetPage(name: Routes.dashboardPage, page: () => const ProfileUI()),
+    GetPage(name: Routes.dashboardPage, page: () => DashboardUI()),
+    GetPage(name: Routes.aggregatorsPage, page: () => AggregatorsUI()),
+    GetPage(name: Routes.messagesPage, page: () => MessagesUI()),
+    GetPage(name: Routes.settingsPage, page: () => SettingsUI()),
+    GetPage(name: Routes.profilePage, page: () => ProfileUI()),
   ];
 }
