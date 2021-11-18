@@ -4,6 +4,15 @@ import 'package:get/get.dart';
 class WelcomeUI extends StatelessWidget {
   const WelcomeUI({Key? key}) : super(key: key);
 
+  static const String routeName = '/welcome';
+
+  static Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (context) => const WelcomeUI(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,0 +1,1 @@
+export 'newsapi_provider.dart';

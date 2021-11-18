@@ -4,6 +4,15 @@ import 'package:news_ai/src/widgets/widgets.dart';
 class SettingsUI extends StatelessWidget {
   SettingsUI({Key? key}) : super(key: key);
 
+  static const String routeName = '/settings';
+
+  static Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (context) => SettingsUI(),
+    );
+  }
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final String _title = 'Настройки';
 

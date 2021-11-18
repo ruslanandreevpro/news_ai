@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:news_ai/src/widgets/widgets.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -24,10 +23,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(LineIcons.bars),
         onPressed: () => scaffoldKey.currentState!.openDrawer(),
       ),
-      actions: [
-        Notifications(),
-        Messages(),
-        AccountMenu(),
+      actions: const [
+        // Notifications(),
+        // Messages(),
+        // AccountMenu(),
+        // const SizedBox(width: 8.0,),
       ],
     );
   }

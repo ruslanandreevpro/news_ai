@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:news_ai/src/data/controllers/controllers.dart';
 import 'package:news_ai/src/widgets/widgets.dart';
 
 class AccountMenu extends StatelessWidget {
   AccountMenu({Key? key}) : super(key: key);
 
-  final AuthController _authController = AuthController.to;
-
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       tooltip: 'Меню пользователя',
-      icon: Avatar(photoUrl: '', size: 12.0),
+      // icon: Avatar(photoUrl: '', size: 12.0),
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 4.0),
+        child: Row(
+          children: [
+            Avatar(photoUrl: '', size: 12.0),
+            const SizedBox(width: 8.0),
+            // Text(_authController.currentUser.value!.name!),
+          ],
+        ),
+      ),
       itemBuilder: (context) => [
         PopupMenuItem(
           value: 'SETTINGS',
@@ -61,7 +68,7 @@ class AccountMenu extends StatelessWidget {
             Get.toNamed('/profile');
             break;
           case 'SIGN_OUT':
-            _authController.signOut();
+            // _authController.signOut();
             break;
         }
       },

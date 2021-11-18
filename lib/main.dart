@@ -1,34 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:news_ai/src/core/routes/pages.dart';
-import 'package:news_ai/src/data/controllers/controllers.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_ai/src/bloc/auth/authentication_event.dart';
+import 'package:news_ai/src/bloc/auth/authentication_state.dart';
+import 'package:news_ai/src/bloc/bloc.dart';
+import 'package:news_ai/src/data/repositories/repositories.dart';
 import 'package:url_strategy/url_strategy.dart';
 
+import 'src/ui/ui.dart';
+
 void main() async {
+  Bloc.observer = SimpleBlocObserver();
+  final UserRepository userRepository = UserRepository();
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put<AuthController>(AuthController());
-  Get.put<AvatarsController>(AvatarsController());
-  Get.put<CustomDrawerController>(CustomDrawerController());
-  Get.put<DatabaseController>(DatabaseController());
-  Get.put<MessageController>(MessageController());
-  Get.put<NotificationController>(NotificationController());
-  Get.put<RSSController>(RSSController());
-  Get.put<StorageController>(StorageController());
   setPathUrlStrategy();
-  runApp(const NewsAIApp());
+  runApp(BlocProvider(
+    create: (context) => AuthenticationBloc(
+      userRepository: userRepository,
+    )..add(AuthenticationStarted()),
+    child: NewsAIApp(
+      userRepository: userRepository,
+    ),
+  ),);
 }
 
 class NewsAIApp extends StatelessWidget {
-  const NewsAIApp({Key? key}) : super(key: key);
+  final UserRepository _userRepository;
+
+  NewsAIApp({required UserRepository userRepository}) : _userRepository = userRepository;
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'News AI',
-      initialRoute: Routes.initialPage,
-      getPages: AppPages.pages,
-      transitionDuration: const Duration(milliseconds: 0),
+      theme: ThemeData.light(),
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is AuthenticationFailure) {
+            return SignInUI(userRepository: _userRepository);
+          }
+
+          if (state is AuthenticationSuccess) {
+            return HomeUI(user: state.user);
+          }
+
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }

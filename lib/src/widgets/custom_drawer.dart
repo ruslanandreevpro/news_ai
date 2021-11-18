@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:news_ai/src/data/controllers/controllers.dart';
 
 class CustomDrawer extends StatelessWidget {
   CustomDrawer({Key? key}) : super(key: key);
-
-  final CustomDrawerController _customDrawerController = CustomDrawerController.to;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -34,6 +30,11 @@ class CustomDrawer extends StatelessWidget {
               route: '/aggregators',
             ),
             customDrawerItem(
+              title: 'Новости',
+              icon: LineIcons.newspaper,
+              route: '/news',
+            ),
+            customDrawerItem(
               title: 'Сообщения',
               icon: LineIcons.envelope,
               route: '/messages',
@@ -48,9 +49,7 @@ class CustomDrawer extends StatelessWidget {
     return ListTile(
       leading: Icon(icon),
       title: Text(title!),
-      onTap: () {
-        Get.toNamed(route!);
-      },
+      onTap: () {},
     );
   }
 }

@@ -1,8 +1,20 @@
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:news_ai/src/widgets/widgets.dart';
 
 class HomeUI extends StatelessWidget {
-  HomeUI({Key? key}) : super(key: key);
+  final User user;
+
+  HomeUI({Key? key, required this.user}) : super(key: key);
+
+  static const String routeName = '/';
+
+  Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (context) => HomeUI(user: user),
+    );
+  }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final String _title = 'Главная';

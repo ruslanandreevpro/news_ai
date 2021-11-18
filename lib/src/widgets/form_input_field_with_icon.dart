@@ -11,7 +11,7 @@ class FormInputFieldWithIcon extends StatelessWidget {
     this.minLines = 1,
     this.maxLines,
     required this.onChanged,
-    required this.onSaved
+    required this.onSaved,
   });
 
   final TextEditingController controller;
